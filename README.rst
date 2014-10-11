@@ -36,7 +36,6 @@ this command::
 
     >> pykey new
     Enter key for default vault: ilovefish
-    Create a new entry on default vault.
     Enter the name for this credential: My personal email
     Enter username used in the service: fishlover@gmail.com
     How lengthy the password will be [15]: 
