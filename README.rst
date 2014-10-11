@@ -1,3 +1,5 @@
+.. image:: https://travis-ci.org/kecebongsoft/pykey.svg?branch=develop 
+
 pykey
 ------
 
