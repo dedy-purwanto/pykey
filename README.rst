@@ -137,7 +137,6 @@ To edit the vault passphrase, use::
 
     >> pykey vaults edit 2
     Editing vault "work"
-    Enter a unique vault name [work]:
     Enter your key (Something you can easily remember but secure enough): ilovefriday
     Confirm your key: ilovefriday
 
