@@ -114,7 +114,7 @@ also choose to just show it in terminal::
 If you wish to have another vault to store another set of passwords, you
 can use this command::
 
-    >> pykey new vault
+    >> pykey vaults new
     Creating a new vault.
     Enter a unique vault name: work
     Enter your key (Something you can easily remember but secure enough): ihatemonday
@@ -124,6 +124,20 @@ After that, you can start to create, edit, list and find passwords as
 demonstrated above with your new vault, just pass the ``-v`` parameter::
 
     >> pykey -v work
+
+To list all registered vaults, use::
+
+    >> pykey vaults
+    1. Default
+    2. work
+
+To edit the vault passphrase, use::
+
+    >> pykey vaults edit 1
+    Editing vault "work"
+    Enter a unique vault name [work]:
+    Enter your key (Something you can easily remember but secure enough): ilovefriday
+    Confirm your key: ilovefriday
 
 Configuring pykey
 ==================
