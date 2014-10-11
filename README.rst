@@ -38,6 +38,7 @@ this command::
     Enter key for default vault: ilovefish
     Create a new entry on default vault.
     Enter the name for this credential: My personal email
+    Enter username used in the service: fishlover@gmail.com
     How lengthy the password will be [15]: 
     Include non-alphanumeric [Y/n]: 
     Shortcode (max-3 chars) []: pe
@@ -50,17 +51,19 @@ command::
     >> pykey edit pe
     Enter key for default vault: ilovefish
     Enter the name for this credential [My personal email]: 
+    Enter username used in the service [fishlover@gmail.com]:
     How lengthy the password will be [15]: 
     Include non-alphanumeric [Y/n]: 
     Shortcode (max-3 chars) [pe]: 
     Password updated for "My personal email" with shortcode pe.
 
 What if you don't want your password to be auto-generated?, you can pass
-the `-no-gen` parameter when creating/editing password::
+the ``--no-gen`` parameter when creating/editing password::
 
     >> pykey edit pe --no-gen
     Enter key for default vault: ilovefish
     Enter the name for this credential [My personal email]: 
+    Enter username used in the service [fishlover@gmail.com]:
     Enter the password: iloveturtlesmore
     Confirm the password: iloveturtlesmore
     Shortcode (max-3 chars) [pe]: 
@@ -69,19 +72,28 @@ To list your passwords, use::
 
     >> pykey
     Enter key for default vault: ilovefish
-            1. My facebook at 1st Sep 2014, 03:30PM
-            2. My twitter at 1st Sep 2014, 03:30PM
-            3. Personal email at yahoo at 1st Sep 2014, 03:30PM
-    [pe]    4. My personal email at 1st Sep 2014, 03:30PM
-    [ins]   5. Instagram  at 1st Sep 2014, 03:30PM
 
-The list will display the shortcode, the ID, name of the password and
-the date created. You can also find by name::
+    ======================================================================================================
+    Code| # | Name                      | Username              | Created             | Modified
+    ======================================================================================================
+        | 1 | My Facebook               | fishlover             | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+        | 2 | My Twitter                | fishlover             | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+        | 3 | Personal email at yahoo   | fish_lover@yahoo.com  | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+    pe  | 4 | My personal email         | fishlover@gmail.com   | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+    ins | 5 | Instagram                 | fishlover             | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+    ======================================================================================================
+
+You can also find by using the ``find`` command::
 
     >> pykey find personal
     Enter key for default vault: ilovefish
-            3. Personal email at yahoo at 1st Sep 2014, 03:30PM
-    [pe]    4. My personal email at 1st Sep 2014, 03:30PM
+
+    ======================================================================================================
+    Code| # | Name                      | Username              | Created             | Modified
+    ======================================================================================================
+        | 3 | Personal email at yahoo   | fish_lover@yahoo.com  | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+    pe  | 4 | My personal email         | fishlover@gmail.com   | 1 Jan 2014 03:30 PM | 1 May 2014 10:00AM
+    ======================================================================================================
 
 You can then use the shortcode or ID to fetch the password::
 
@@ -110,15 +122,15 @@ can use this command::
     Confirm your key: ihatemonday
 
 After that, you can start to create, edit, list and find passwords as
-demonstrated above with your new vault, just pass the `-v` parameter::
+demonstrated above with your new vault, just pass the ``-v`` parameter::
 
     >> pykey -v work
 
 Configuring pykey
 ==================
-By default, pykey stores all keys and vaults in `~/.pykey`, and 
-configuration is in `~/.pykeyrc`. You can move pykey storages and even
-separate the vaults and keys by modifying `~/.pykeyrc` file::
+By default, pykey stores all keys and vaults in ``~/.pykey``, and 
+configuration is in ``~/.pykeyrc``. You can move pykey storages and even
+separate the vaults and keys by modifying ``~/.pykeyrc`` file::
 
     [default]
     key = ~/.pykey/default.key
