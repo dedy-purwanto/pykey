@@ -29,6 +29,7 @@ create a new one and prompt you this::
     Default vault not found, it seems like you are running this command 
     for the first time. Let's create a default vault for you.
     Enter your key (Something you can easily remember but secure enough): ilovefish
+    Confirm your key: ilovefish
 
 That's it you are ready to use pykey!. To create a new password, use
 this command::
@@ -61,6 +62,7 @@ the `-no-gen` parameter when creating/editing password::
     Enter key for default vault: ilovefish
     Enter the name for this credential [My personal email]: 
     Enter the password: iloveturtlesmore
+    Confirm the password: iloveturtlesmore
     Shortcode (max-3 chars) [pe]: 
 
 To list your passwords, use::
@@ -104,7 +106,8 @@ can use this command::
     >> pykey new vault
     Creating a new vault.
     Enter a unique vault name: work
-    Enter your key (Something you can easily remember but secure enough): <your passphrase goes here>
+    Enter your key (Something you can easily remember but secure enough): ihatemonday
+    Confirm your key: ihatemonday
 
 After that, you can start to create, edit, list and find passwords as
 demonstrated above with your new vault, just pass the `-v` parameter::
