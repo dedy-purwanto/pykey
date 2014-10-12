@@ -16,6 +16,12 @@ def get_config():
         configfile.close()
 
     return config
+
+def write_config(config):
+    configfile = open(CONFIG_FILENAME, 'w')
+    config.write(configfile)
+    return config
+
 @click.group()
 def main():
     pass

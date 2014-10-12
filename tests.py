@@ -35,6 +35,10 @@ class TestConfig(unittest.TestCase):
 
     def test_open_config(self):
         self.assertTrue(False)
+    def test_write_config(self):
+        old_config = pykey.get_config()
+        new_config = pykey.write_config(old_config)
+        self.assertTrue(isinstance(new_config, ConfigParser.RawConfigParser))
 
     def test_edit_config(self):
         self.assertTrue(False)
