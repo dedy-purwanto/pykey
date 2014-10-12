@@ -1,3 +1,5 @@
+|ImageLink|_
+
 .. |ImageLink| image:: https://travis-ci.org/kecebongsoft/pykey.svg?branch=develop 
 .. _ImageLink: http://travis-ci.org/kecebongsoft/pykey
 
