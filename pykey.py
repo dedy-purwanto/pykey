@@ -1,6 +1,21 @@
 #!/usr/bin/env python
+import os
+import ConfigParser
+
 import click
 
+USER_PATH = os.path.expanduser('~')
+CONFIG_FILENAME = os.path.join(USER_PATH, '.pykeyrc')
+DEFAULT_STORAGE_PATH = os.path.join(USER_PATH, '.pykey')
+
+def get_config():
+    config = ConfigParser.RawConfigParser()
+    if os.path.isfile(CONFIG_FILENAME):
+        configfile = open(CONFIG_FILENAME, 'r')
+        config.readfp(configfile)
+        configfile.close()
+
+    return config
 @click.group()
 def main():
     pass

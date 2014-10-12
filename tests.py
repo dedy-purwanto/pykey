@@ -1,4 +1,7 @@
 import unittest
+import ConfigParser
+
+from pykey import pykey
 
 class TestVault(unittest.TestCase):
 
@@ -38,6 +41,9 @@ class TestConfig(unittest.TestCase):
 
     def test_create_config(self):
         self.assertTrue(False)
+    def test_get_config(self):
+        config = pykey.get_config()
+        self.assertTrue(isinstance(config, ConfigParser.RawConfigParser))
 
 if __name__ == '__main__':
     unittest.main()
