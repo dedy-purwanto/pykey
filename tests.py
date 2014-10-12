@@ -28,5 +28,16 @@ class TestPassword(unittest.TestCase):
     def test_get_password(self):
         self.assertTrue(False)
 
+class TestConfig(unittest.TestCase):
+
+    def test_open_config(self):
+        self.assertTrue(False)
+
+    def test_edit_config(self):
+        self.assertTrue(False)
+
+    def test_create_config(self):
+        self.assertTrue(False)
+
 if __name__ == '__main__':
     unittest.main()
