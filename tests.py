@@ -24,17 +24,18 @@ class TestVault(TestMixin, unittest.TestCase):
                 self.vault, name="myvault", key_filename="/tmp/myvault.pykey", 
                 vault_filename="/tmp/myvault.json")
 
+        vault_parser = ConfigParser.RawConfigParser()
+        vault_parser.readfp(open(self.saved_vault['key_filename'], 'r'))
+
     def test_list_vault(self):
         self.assertTrue(False)
 
     def test_vault_validity(self):
-        vault_parser = ConfigParser.RawConfigParser()
-        vault_parser.readfp(open(self.saved_vault['key_filename'], 'r'))
-        self.assertEqual(vault_parser.get('cipher', 'cipher'), self.vault['cipher'])
-        self.assertEqual(vault_parser.get('cipher', 'iv'), self.vault['iv'])
-        self.assertEqual(vault_parser.get('cipher', 'salt'), self.vault['salt'])
+        self.assertEqual(self.vault_parser.get('cipher', 'cipher'), self.vault['cipher'])
+        self.assertEqual(self.vault_parser.get('cipher', 'iv'), self.vault['iv'])
+        self.assertEqual(self.vault_parser.get('cipher', 'salt'), self.vault['salt'])
         self.assertEqual(
-                vault_parser.get('cipher', 'iterations'), 
+                self.vault_parser.get('cipher', 'iterations'), 
                 str(self.vault['iterations']))
 
         pykey.register_vault(self.saved_vault)
