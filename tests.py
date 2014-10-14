@@ -27,8 +27,6 @@ class TestVault(TestMixin, unittest.TestCase):
         self.vault_parser = ConfigParser.RawConfigParser()
         self.vault_parser.readfp(open(self.saved_vault['key_filename'], 'r'))
 
-    def test_list_vault(self):
-        self.assertTrue(False)
     def test_vault_validity_cipher(self):
         self.assertEqual(
                 self.vault_parser.get('cipher', 'cipher'), self.vault['cipher'])
