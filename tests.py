@@ -14,13 +14,33 @@ class TestMixin(object):
         if os.path.isfile(pykey.CONFIG_FILENAME):
             os.remove(pykey.CONFIG_FILENAME)
 
-class TestVault(unittest.TestCase):
+class TestVault(TestMixin, unittest.TestCase):
 
     def test_list_vault(self):
         self.assertTrue(False)
 
     def test_create_vault(self):
-        self.assertTrue(False)
+        vault = pykey.create_vault("mypassphrase")
+
+        saved_vault = pykey.save_vault(
+                vault, name="myvault", key_filename="/tmp/myvault.pykey", 
+                vault_filename="/tmp/myvault.json")
+
+        vault_parser = ConfigParser.RawConfigParser()
+        vault_parser.readfp(open(saved_vault['key_filename'], 'r'))
+        self.assertEqual(vault_parser.get('cipher', 'cipher'), vault['cipher'])
+        self.assertEqual(vault_parser.get('cipher', 'iv'), vault['iv'])
+        self.assertEqual(vault_parser.get('cipher', 'salt'), vault['salt'])
+        self.assertEqual(
+                vault_parser.get('cipher', 'iterations'), 
+                str(vault['iterations']))
+
+        pykey.register_vault(saved_vault)
+        config = pykey.get_config()
+        self.assertEqual(
+                config.get('myvault', 'key'), saved_vault['key_filename'])
+        self.assertEqual(
+                config.get('myvault', 'vault'), saved_vault['vault_filename'])
 
     def test_edit_vault(self):
         self.assertTrue(False)
