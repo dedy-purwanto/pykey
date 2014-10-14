@@ -3,6 +3,9 @@
 .. |ImageLink| image:: https://travis-ci.org/kecebongsoft/pykey.svg?branch=develop 
 .. _ImageLink: http://travis-ci.org/kecebongsoft/pykey
 
+.. image:: https://coveralls.io/repos/kecebongsoft/pykey/badge.png
+:target: https://coveralls.io/r/kecebongsoft/pykey
+
 pykey
 ------
 
