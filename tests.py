@@ -29,6 +29,10 @@ class TestVault(TestMixin, unittest.TestCase):
 
     def test_list_vault(self):
         self.assertTrue(False)
+    def test_vault_validity_cipher(self):
+        self.assertEqual(
+                self.vault_parser.get('cipher', 'cipher'), self.vault['cipher'])
+
 
     def test_vault_validity(self):
         self.assertEqual(self.vault_parser.get('cipher', 'cipher'), self.vault['cipher'])
