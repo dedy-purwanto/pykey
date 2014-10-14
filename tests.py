@@ -44,6 +44,7 @@ class TestVault(TestMixin, unittest.TestCase):
                 self.vault_parser.get('cipher', 'iterations'), 
                 str(self.vault['iterations']))
 
+    def test_vault_config_validity_key_filename(self):
         pykey.register_vault(self.saved_vault)
         config = pykey.get_config()
         self.assertEqual(
