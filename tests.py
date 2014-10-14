@@ -49,28 +49,13 @@ class TestVault(TestMixin, unittest.TestCase):
         config = pykey.get_config()
         self.assertEqual(
                 config.get('myvault', 'key'), self.saved_vault['key_filename'])
+
+    def test_vault_config_validity_vault_filename(self):
+        pykey.register_vault(self.saved_vault)
+        config = pykey.get_config()
         self.assertEqual(
-                config.get('myvault', 'vault'), self.saved_vault['vault_filename'])
-
-    def test_edit_vault(self):
-        self.assertTrue(False)
-
-class TestPassword(unittest.TestCase):
-
-    def test_list_password(self):
-        self.assertTrue(False)
-
-    def test_find_password(self):
-        self.assertTrue(False)
-
-    def test_create_password(self):
-        self.assertTrue(False)
-
-    def test_edit_password(self):
-        self.assertTrue(False)
-
-    def test_get_password(self):
-        self.assertTrue(False)
+                config.get('myvault', 'vault'), 
+                self.saved_vault['vault_filename'])
 
 class TestConfig(TestMixin, unittest.TestCase):
 
