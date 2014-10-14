@@ -166,8 +166,28 @@ FAQ
 What is the security measurement applied in pykey?
 ===================================================
 
-Pykey is using AES-256 encryption to encrypt your keys. All the values stored
+Pykey is using AES256 cipher to encrypt your keys. All the values stored
 in the vault are encrypted using your keys.
+
+Your key is generated using AES256 cipher with per-vault randomly
+generated IV (32-bit) and salt keys (32-bit). 
+
+To make pykey resistant against bruteforce, your passphrase is rebuilt
+with a 32-bit randomised salt for 50,000 times using PBKDF2, this will make 
+hashing computation a lot more expensive. For a user, it will take about
+1-2 seconds to rebuilt a key from your passphrase, this means
+brute-forcing will take forever to get the right value.
+
+All the data that is stored in the vault is encrypted, they are not hash
+values, which means attacker can't use hash-collision / rainbow-tables
+to get the same hash.
+
+Your key file will include your cipher information (for now it's only
+AES-32), your IV hex, your salt hex and the number of iteration for
+PBKDF2 (by default it's 50,000). The default setting for building your
+passphrase is secure enough to make sure no attacker can get your
+password by owning your key / vault file.
+
 
 What if someone hack into my laptop and steal my vault and key file?
 =====================================================================
@@ -222,3 +242,22 @@ How can I contribute?
 Thanks! pykey is currently in the very early stage and need a lot of
 inputs, especially in terms of security measurement. Please read through
 this readme and post any issue you have in mind.
+
+I am a big fan of password manager, but I'm not by any means a security
+expert nor holding any degree in related fields. I'm trying my best to
+reuse and follow all best and relevant practices when implementing
+pykey, however, if you have any concern or found any design
+/ implementation flaw, I'll be more than happy to hear about it. 
+
+What is the design philosophy for pykey?
+=========================================
+pykey is not a complex program, it's just a helper/utiltity which reuse
+a lot of existing cryptographic-related libraries in python. On every
+possible occasion, I always try to remove unnecessary complexity that
+doesn't bring any value to pykey. This often came from security stand
+point, for example, I'm still comfortable using JSON format for the
+vault file as long as the values inside it are securely encrypted.
+Adding additional layer of complexity such as encrypting the whole JSON
+file, or switching it to password-protected local database file, or any
+similar approach will just add additional complexity while not adding
+significant value to it's security.
