@@ -1,3 +1,7 @@
 [report]
 omit = 
     *__init__*
+    *Crypto*
+    *click*
+    *contextlib*
+    *encoding*
