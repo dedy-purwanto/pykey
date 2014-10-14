@@ -24,8 +24,8 @@ class TestVault(TestMixin, unittest.TestCase):
                 self.vault, name="myvault", key_filename="/tmp/myvault.pykey", 
                 vault_filename="/tmp/myvault.json")
 
-        vault_parser = ConfigParser.RawConfigParser()
-        vault_parser.readfp(open(self.saved_vault['key_filename'], 'r'))
+        self.vault_parser = ConfigParser.RawConfigParser()
+        self.vault_parser.readfp(open(self.saved_vault['key_filename'], 'r'))
 
     def test_list_vault(self):
         self.assertTrue(False)
