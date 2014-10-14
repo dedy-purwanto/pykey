@@ -39,10 +39,7 @@ class TestVault(TestMixin, unittest.TestCase):
         self.assertEqual(
                 self.vault_parser.get('cipher', 'salt'), self.vault['salt'])
 
-    def test_vault_validity(self):
-        self.assertEqual(self.vault_parser.get('cipher', 'cipher'), self.vault['cipher'])
-        self.assertEqual(self.vault_parser.get('cipher', 'iv'), self.vault['iv'])
-        self.assertEqual(self.vault_parser.get('cipher', 'salt'), self.vault['salt'])
+    def test_vault_validity_iterations(self):
         self.assertEqual(
                 self.vault_parser.get('cipher', 'iterations'), 
                 str(self.vault['iterations']))
