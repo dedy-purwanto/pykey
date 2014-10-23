@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
-import ConfigParser
 import binascii
+import ConfigParser
 
 import click
 from Crypto.Protocol.KDF import PBKDF2
@@ -12,7 +12,7 @@ CONFIG_FILENAME = os.path.join(USER_PATH, '.pykeyrc')
 DEFAULT_STORAGE_PATH = os.path.join(USER_PATH, '.pykey')
 DEFAULT_SECTION = 'main'
 PASSPHRASE_DEFAULT_ITERATIONS = 50000
-AES_DEFAULT_DEPTH = 16
+AES_DEFAULT_DEPTH = 32
 
 def get_config():
     config = ConfigParser.RawConfigParser()
@@ -38,7 +38,7 @@ def create_vault(passphrase):
     key = PBKDF2(
             passphrase, 
             salt, 
-            dkLen=16, 
+            dkLen=32, 
             count=PASSPHRASE_DEFAULT_ITERATIONS)
 
     return dict(
